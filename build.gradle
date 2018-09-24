@@ -3,11 +3,11 @@
 buildscript {
 
     repositories {
-        maven { url 'https://maven.google.com' }
-        jcenter()
+         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,7 +17,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven { url 'https://maven.google.com' }
+         google()
     }
 }
 
@@ -32,13 +32,14 @@ ext {
     gsonConverterVersion = '2.1.0'
     okhttpVersion = '3.8.0'
     picassoVersion = '2.5.2'
-    archVersion = '1.0.0-alpha1'
+    archVersion = '1.1.0'
 
     supportLibAppCompat = "com.android.support:appcompat-v7:$supportLibVersion"
     supportLibDesign = "com.android.support:design:$supportLibVersion"
     archRuntime = "android.arch.lifecycle:runtime:$archVersion"
     archExtension = "android.arch.lifecycle:extensions:$archVersion"
-    archCompiler = "android.arch.lifecycle:compiler:$archVersion"
+    archViewModel = "android.arch.lifecycle:viewmodel:$archVersion"
+    archCompiler = "android.arch.lifecycle:common-java8:$archVersion"
     roomRuntime = "android.arch.persistence.room:runtime:$archVersion"
     roomCompiler = "android.arch.persistence.room:compiler:$archVersion"
     dagger = "com.google.dagger:dagger:$daggerVersion"

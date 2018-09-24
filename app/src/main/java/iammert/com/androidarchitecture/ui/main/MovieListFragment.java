@@ -1,5 +1,6 @@
 package iammert.com.androidarchitecture.ui.main;
 
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -9,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import iammert.com.androidarchitecture.R;
+import iammert.com.androidarchitecture.data.Resource;
 import iammert.com.androidarchitecture.data.local.entity.MovieEntity;
 import iammert.com.androidarchitecture.databinding.FragmentMovieListBinding;
 import iammert.com.androidarchitecture.ui.BaseFragment;
 import iammert.com.androidarchitecture.ui.detail.MovieDetailActivity;
+import java.util.List;
 
 /**
  * Created by mertsimsek on 19/05/2017.
@@ -50,7 +53,12 @@ public class MovieListFragment extends BaseFragment<MovieListViewModel, Fragment
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         viewModel.getPopularMovies()
-                .observe(this, listResource -> dataBinding.setResource(listResource));
+                .observe(this, new Observer<Resource<List<MovieEntity>>>() {
+                    @Override
+                    public void onChanged(@Nullable Resource<List<MovieEntity>> listResource) {
+                        dataBinding.setResource(listResource);
+                    }
+                });
     }
 
     @Override
